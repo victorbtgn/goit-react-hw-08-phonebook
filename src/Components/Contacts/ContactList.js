@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ContactItem from './ContactItem';
 import { connect } from 'react-redux';
-import contactsOperations from '../../redux/contacts-operations';
-import contactSelectors from '../../redux/contacts-selectors';
+import contactsOperations from '../../redux/contacts/contacts-operations';
+import contactSelectors from '../../redux/contacts/contacts-selectors';
 import PropTypes from 'prop-types';
+import authSelectors from '../../redux/auth/auth-selectors';
 
 class ContactList extends Component {
   componentDidMount() {
@@ -28,6 +29,7 @@ ContactList.propTypes = {
 
 const mapStateToProps = state => ({
   contacts: contactSelectors.getVisibleContacts(state),
+  isAuthenticated: authSelectors.getIsAuthenticated(state),
 });
 
 const mapDispatchToProps = dispatch => ({

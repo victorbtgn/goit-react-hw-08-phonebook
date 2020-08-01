@@ -5,13 +5,7 @@ const ContactItem = ({ id, name, number, onDelete }) => (
   <li className="list-item">
     <div className="list-item-data">
       <span>{name}:</span>
-      <span>
-        {number[0]}
-        {number[1]}-{number[2]}
-        {number[3]}-{number[4]}
-        {number[5]}
-        {number[6]}
-      </span>
+      <span>{number}</span>
     </div>
     <button className="btnContact" type="button" onClick={() => onDelete(id)}>
       &#215;
@@ -20,7 +14,7 @@ const ContactItem = ({ id, name, number, onDelete }) => (
 );
 
 ContactItem.propTypes = {
-  id: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onDelete: PropTypes.func.isRequired,

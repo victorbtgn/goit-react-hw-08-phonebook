@@ -1,13 +1,95 @@
 .phonebook {
-  width: 320px;
+  width: 100%;
+  min-width: 320px;
   padding: 30px;
   background: linear-gradient(to right, #daf7f856, #63f8f844);
   border-radius: 15px;
   position: relative;
+  min-height: 100vh;
 }
 
 .section {
   margin-bottom: 20px;
+}
+
+/* app bar */
+
+header {
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.Logo {
+  fill: #606679;
+  transition: 0.2s linear;
+  margin-right: 30px;
+}
+
+.Logo:hover,
+.Logo:focus,
+.activeLogo {
+  transform: scale(1.1) rotate(20deg);
+  fill: #0037ec;
+  transition: 0.2s linear;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.headerLink {
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4f5252;
+  transition: 0.2s linear;
+}
+
+.headerLink:hover,
+.headerLink:focus {
+  color: #0037ec;
+  transition: 0.2s linear;
+}
+
+.headerLink:not(:last-child) {
+  margin-right: 10px;
+}
+
+.logOutBtn {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #4f5252;
+  transition: 0.2s linear;
+  outline: none;
+  cursor: pointer;
+}
+
+.logOutBtn:hover,
+.logOutBtn:focus {
+  color: #0037ec;
+  transition: 0.2s linear;
+}
+
+/* /home page */
+
+.homeTitle {
+  font-size: 50px;
+  color: #0037ec;
+  text-align: center;
+  padding-top: 25vh;
+}
+
+/* /contacts page */
+
+.miniContainer {
+  max-width: 400px;
+  /* margin: 0 auto; */
 }
 
 .title {
@@ -109,6 +191,6 @@ input::-webkit-inner-spin-button {
 
 .loader {
   position: absolute;
-  top: 220px;
-  left: 185px;
+  top: 240px;
+  left: 320px;
 }

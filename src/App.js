@@ -1,46 +1,55 @@
-import React from 'react';
+import React, { Component, Suspense } from 'react';
+import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+
+import AppBar from './Components/AppBar/AppBar';
 import Container from './Common/Container';
-import ContactForm from './Components/ContactForm/ContactForm';
-import Filter from './Components/Filter/Filter';
-import ContactList from './Components/Contacts/ContactList';
-import Section from './Common/Section';
-import contactSelectors from './redux/contacts-selectors';
-import 'toasted-notes/src/styles.css';
+import routes from './routes';
 import './App.css';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
+import ContactsView from './views/ContactsView';
+import HomePage from './Components/HomePage/HomePage';
+import RegisterPage from './Components/RegisterPage/RegisterPage';
+import LoginPage from './Components/LoginPage/LoginPage';
+import PrivateRoute from './Components/PrivateRoute';
+import PublicRoute from './Components/PublicRoute';
 
-const App = ({ error, isLoading }) => (
-  <Container>
-    {error && (
-      <>
-        <h1 className="errorMessage">{error}</h1>
-        <p className="errorMessage">The server is temporarily unavailable, try again later.</p>
-      </>
-    )}
+import authOps from './redux/auth/auth-operations';
 
-    {!error && (
-      <>
-        <Section title="Phonebook">
-          <ContactForm />
-        </Section>
+class App extends Component {
+  componentDidMount() {
+    this.props.onGetCurrentUser();
+  }
 
-        <Section title="Contacts">
-          {isLoading && <Loader type="ThreeDots" color="#4f5252" width={100} className="loader" />}
-          <Filter />
+  render() {
+    return (
+      <Container>
+        <AppBar />
 
-          <ContactList />
-        </Section>
-      </>
-    )}
-  </Container>
-);
+        <Suspense
+          fallback={
+            <div className="loader">
+              <Loader type="ThreeDots" color="#4f5252" width={100} />
+            </div>
+          }
+        >
+          <Switch>
+            <Route exact path={routes.home} component={HomePage} />
+            <PublicRoute path={routes.register} restricted redirectTo={routes.home} component={RegisterPage} />
+            <PublicRoute path={routes.login} restricted redirectTo={routes.home} component={LoginPage} />
+            <PrivateRoute path={routes.contacts} redirectTo={routes.login} component={ContactsView} />
+            <Route component={HomePage} />
+          </Switch>
+        </Suspense>
+      </Container>
+    );
+  }
+}
 
-const mapStateToProps = state => ({
-  error: contactSelectors.getError(state),
-  isLoading: contactSelectors.getLoading(state),
-});
+const mapDispatchToProps = {
+  onGetCurrentUser: authOps.getCurrentUser,
+};
 
-export default connect(mapStateToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
