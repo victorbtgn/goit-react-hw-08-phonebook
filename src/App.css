@@ -2,7 +2,7 @@
   width: 100%;
   min-width: 320px;
   padding: 30px;
-  background: linear-gradient(to right, #daf7f856, #63f8f844);
+  background: linear-gradient(to right, #dae1f856, #6379f844);
   border-radius: 15px;
   position: relative;
   min-height: 100vh;
@@ -12,32 +12,16 @@
   margin-bottom: 20px;
 }
 
-/* app bar */
-
 header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
-.Logo {
-  fill: #606679;
-  transition: 0.2s linear;
-  margin-right: 30px;
-}
+/* menu list in header */
 
-.Logo:hover,
-.Logo:focus,
-.activeLogo {
-  transform: scale(1.1) rotate(20deg);
-  fill: #0037ec;
-  transition: 0.2s linear;
-}
-
-nav {
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
+.menuLink {
+  text-decoration: none;
+  font-weight: 700;
+  color: #0037ec;
 }
 
 .verticalBar {
@@ -48,43 +32,13 @@ nav {
 .verticalBar::after {
   content: '|';
   margin-left: 10px;
-  color: #4f5252;
-  font-weight: 700;
+  background-color: #fff;
+  color: #fff;
+  border-radius: 2px;
 }
 
 .headerLink {
   text-decoration: none;
-  font-size: 20px;
-  font-weight: 700;
-  color: #4f5252;
-  transition: 0.2s linear;
-}
-
-.headerLink:hover,
-.headerLink:focus {
-  color: #0037ec;
-  transition: 0.2s linear;
-}
-
-.headerLink:not(:last-child) {
-  margin-right: 10px;
-}
-
-.logOutBtn {
-  background: transparent;
-  border: none;
-  font-size: 20px;
-  font-weight: 700;
-  color: #4f5252;
-  transition: 0.2s linear;
-  outline: none;
-  cursor: pointer;
-}
-
-.logOutBtn:hover,
-.logOutBtn:focus {
-  color: #0037ec;
-  transition: 0.2s linear;
 }
 
 /* /home page */
@@ -104,7 +58,7 @@ nav {
 }
 
 .title {
-  color: #4f5252;
+  color: #0037ec;
   margin-bottom: 10px;
 }
 
@@ -115,6 +69,10 @@ nav {
   padding: 0 10px;
   border: 1px solid;
   border-radius: 10px;
+}
+
+.input:focus {
+  outline: 0;
 }
 
 input::-webkit-outer-spin-button,
@@ -129,7 +87,7 @@ input::-webkit-inner-spin-button {
 
 .input-error {
   font-size: 12px;
-  color: #f51818;
+  color: #e96b04;
 }
 
 .btn {
@@ -137,9 +95,9 @@ input::-webkit-inner-spin-button {
   height: 30px;
   font-size: 16px;
   font-weight: 700;
-  color: #4f5252;
+  color: #0037ec;
   padding: 0 10px;
-  border: 1px solid #01afaf;
+  border: 1px solid #0037ec;
   border-radius: 15px;
   background: transparent;
   transition: 0.3s linear;
@@ -151,19 +109,19 @@ input::-webkit-inner-spin-button {
   height: 25px;
   font-size: 20px;
   background-color: #fafafa;
-  border: 1px solid #01afaf;
+  border: 1px solid #0037ec;
   border-radius: 15px;
   transition: 0.3s linear;
 }
 
 .btn:hover {
   color: #fafafa;
-  background: #01afaf;
+  background: #0037ec;
   transition: 0.1s linear;
 }
 
 .btnContact:hover {
-  background: #f51818;
+  background: #e96b04;
   color: #fafafa;
   transition: 0.1s linear;
 }
@@ -178,7 +136,7 @@ input::-webkit-inner-spin-button {
   align-items: center;
   margin-bottom: 10px;
   padding: 5px 10px;
-  border: 1px solid #01afaf;
+  border: 1px solid #0037ec;
   border-radius: 10px;
   transition: 0.1s linear;
 }
@@ -197,11 +155,11 @@ input::-webkit-inner-spin-button {
 
 .errorMessage {
   font-size: 20px;
-  color: #f51818;
+  color: #e96b04;
 }
 
 .loader {
   position: absolute;
-  top: 240px;
+  top: 310px;
   left: 320px;
 }

@@ -2,14 +2,14 @@ import React, { Component, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import AppBar from './Components/AppBar/AppBar';
+import AppBarView from './views/AppBarView/AppBarView';
 import Container from './Common/Container';
 import routes from './routes';
 import './App.css';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
-import ContactsView from './views/ContactsView';
+import ContactsView from './views/ContactsView/ContactsView';
 import HomePage from './Components/HomePage/HomePage';
 import RegisterPage from './Components/RegisterPage/RegisterPage';
 import LoginPage from './Components/LoginPage/LoginPage';
@@ -26,7 +26,7 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <AppBar />
+        <AppBarView />
 
         <Suspense
           fallback={

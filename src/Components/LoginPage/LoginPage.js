@@ -24,19 +24,22 @@ const LoginPage = ({ onSubmit }) => (
     }}
   >
     {({ isSubmitting }) => (
-      <Form className="miniContainer">
-        <div className="input-form">
-          <Field type="email" name="email" className="input" placeholder="Your email" />
-          <ErrorMessage name="email" component="div" className="input-error" />
-        </div>
-        <div className="input-form">
-          <Field type="password" name="password" className="input" placeholder="Password" />
-          <ErrorMessage name="password" component="div" className="input-error" />
-        </div>
-        <button type="submit" disabled={isSubmitting} className="btn">
-          Log in
-        </button>
-      </Form>
+      <>
+        <h2 className="title">Authenticated</h2>
+        <Form className="miniContainer">
+          <div className="input-form">
+            <Field type="email" name="email" className="input" placeholder="Your email" />
+            <ErrorMessage name="email" component="div" className="input-error" />
+          </div>
+          <div className="input-form">
+            <Field type="password" name="password" className="input" placeholder="Password" />
+            <ErrorMessage name="password" component="div" className="input-error" />
+          </div>
+          <button type="submit" disabled={isSubmitting} className="btn">
+            Log in
+          </button>
+        </Form>
+      </>
     )}
   </Formik>
 );

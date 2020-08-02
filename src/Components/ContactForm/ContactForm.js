@@ -32,19 +32,22 @@ const ContactForm = ({ items, onSubmit }) => (
     }}
   >
     {({ isSubmitting }) => (
-      <Form>
-        <div className="input-form">
-          <Field type="text" name="name" className="input" placeholder="Name" />
-          <ErrorMessage name="name" component="div" className="input-error" />
-        </div>
-        <div className="input-form">
-          <Field type="tel" name="number" className="input" placeholder="Number" />
-          <ErrorMessage name="number" component="div" className="input-error" />
-        </div>
-        <button type="submit" disabled={isSubmitting} className="btn">
-          Add contact
-        </button>
-      </Form>
+      <>
+        <h2 className="title">Add new contact</h2>
+        <Form>
+          <div className="input-form">
+            <Field type="text" name="name" className="input" placeholder="Name" />
+            <ErrorMessage name="name" component="div" className="input-error" />
+          </div>
+          <div className="input-form">
+            <Field type="tel" name="number" className="input" placeholder="Number" />
+            <ErrorMessage name="number" component="div" className="input-error" />
+          </div>
+          <button type="submit" disabled={isSubmitting} className="btn">
+            Add contact
+          </button>
+        </Form>
+      </>
     )}
   </Formik>
 );

@@ -28,23 +28,26 @@ const RegisterPage = ({ onSubmit }) => (
     }}
   >
     {({ isSubmitting }) => (
-      <Form className="miniContainer">
-        <div className="input-form">
-          <Field type="text" name="name" className="input" placeholder="Your Name" />
-          <ErrorMessage name="name" component="div" className="input-error" />
-        </div>
-        <div className="input-form">
-          <Field type="email" name="email" className="input" placeholder="Your email" />
-          <ErrorMessage name="email" component="div" className="input-error" />
-        </div>
-        <div className="input-form">
-          <Field type="password" name="password" className="input" placeholder="Password" />
-          <ErrorMessage name="password" component="div" className="input-error" />
-        </div>
-        <button type="submit" disabled={isSubmitting} className="btn">
-          Confirm
-        </button>
-      </Form>
+      <>
+        <h2 className="title">Registration</h2>
+        <Form className="miniContainer">
+          <div className="input-form">
+            <Field type="text" name="name" className="input" placeholder="Your Name" />
+            <ErrorMessage name="name" component="div" className="input-error" />
+          </div>
+          <div className="input-form">
+            <Field type="email" name="email" className="input" placeholder="Your email" />
+            <ErrorMessage name="email" component="div" className="input-error" />
+          </div>
+          <div className="input-form">
+            <Field type="password" name="password" className="input" placeholder="Password" />
+            <ErrorMessage name="password" component="div" className="input-error" />
+          </div>
+          <button type="submit" disabled={isSubmitting} className="btn">
+            Confirm
+          </button>
+        </Form>
+      </>
     )}
   </Formik>
 );
