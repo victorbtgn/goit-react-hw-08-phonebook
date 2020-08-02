@@ -13,6 +13,7 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
 } from './auth-actions';
+import { initialContacts } from '../contacts/contacts-action';
 
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
@@ -53,6 +54,7 @@ const logout = () => dispatch => {
     .post('/users/logout')
     .then(_ => {
       token.unset();
+      dispatch(initialContacts());
       dispatch(logoutSuccess());
     })
     .catch(({ message }) => dispatch(logoutError(message)));

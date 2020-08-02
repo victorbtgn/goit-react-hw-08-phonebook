@@ -38,7 +38,7 @@ class App extends Component {
           <Switch>
             <Route exact path={routes.home} component={HomePage} />
             <PublicRoute path={routes.register} restricted redirectTo={routes.home} component={RegisterPage} />
-            <PublicRoute path={routes.login} restricted redirectTo={routes.home} component={LoginPage} />
+            <PublicRoute path={routes.login} restricted redirectTo={routes.contacts} component={LoginPage} />
             <PrivateRoute path={routes.contacts} redirectTo={routes.login} component={ContactsView} />
             <Route component={HomePage} />
           </Switch>
