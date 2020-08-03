@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import DeleteIcon from '@material-ui/icons/Delete';
+
 const ContactItem = ({ id, name, number, onDelete }) => (
   <li className="list-item">
     <div className="list-item-data">
       <span>{name}:</span>
-      <span>{number}</span>
+      <span>{convertStringToPhoneNumber(number)}</span>
     </div>
     <button className="btnContact" type="button" onClick={() => onDelete(id)}>
-      &#215;
+      <DeleteIcon />
     </button>
   </li>
 );
+
+const convertStringToPhoneNumber = string => Number(string).toLocaleString('ru');
 
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,

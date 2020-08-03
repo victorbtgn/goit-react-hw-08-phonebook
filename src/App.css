@@ -104,24 +104,20 @@ input::-webkit-inner-spin-button {
 }
 
 .btnContact {
-  composes: btn;
-  width: 25px;
-  height: 25px;
-  font-size: 20px;
-  background-color: #fafafa;
-  border: 1px solid #0037ec;
-  border-radius: 15px;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
   transition: 0.3s linear;
 }
 
 .btn:hover {
   color: #fafafa;
-  background: #0037ec;
+  background: #6b88e6;
   transition: 0.1s linear;
 }
 
 .btnContact:hover {
-  background: #e96b04;
+  background: #6b88e6;
   color: #fafafa;
   transition: 0.1s linear;
 }

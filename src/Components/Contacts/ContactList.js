@@ -11,12 +11,33 @@ class ContactList extends Component {
     this.props.fetchContacts();
   }
 
+  sortByName = () => {
+    if (this.props.contacts.length === 0) return false;
+
+    return this.props.contacts.sort(function (a, b) {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+
+      return 0;
+    });
+  };
+
   render() {
+    const sortContacts = this.sortByName();
+
     return (
       <ul className="list">
-        {this.props.contacts.map(({ id, name, number }) => (
-          <ContactItem key={id} id={id} name={name} number={number} onDelete={() => this.props.onDelete(id)} />
-        ))}
+        {sortContacts &&
+          sortContacts.map(({ id, name, number }) => (
+            <ContactItem key={id} id={id} name={name} number={number} onDelete={() => this.props.onDelete(id)} />
+          ))}
       </ul>
     );
   }
