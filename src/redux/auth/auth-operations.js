@@ -15,6 +15,9 @@ import {
 } from './auth-actions';
 import { initialContacts } from '../contacts/contacts-action';
 
+import toaster from 'toasted-notes';
+import 'toasted-notes/src/styles.css';
+
 axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com';
 
 const token = {
@@ -45,7 +48,12 @@ const login = user => dispatch => {
       token.set(data.token);
       return dispatch(loginSuccess(data));
     })
-    .catch(({ message }) => dispatch(loginError(message)));
+    .catch(({ message }) => {
+      toaster.notify('You have entered an invalid username or password', {
+        duration: 5000,
+      });
+      return dispatch(loginError(message));
+    });
 };
 
 const logout = () => dispatch => {
