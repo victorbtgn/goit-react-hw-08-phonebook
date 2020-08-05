@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import AppBarView from './views/AppBarView/AppBarView';
 import Container from './Common/Container';
 import routes from './routes';
-import './App.css';
 
 import Loader from 'react-loader-spinner';
 import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css';
@@ -19,6 +18,7 @@ import PublicRoute from './Components/PublicRoute';
 import authOps from './redux/auth/auth-operations';
 
 import { Spring } from 'react-spring/renderprops';
+import './App.css';
 
 class App extends Component {
   componentDidMount() {

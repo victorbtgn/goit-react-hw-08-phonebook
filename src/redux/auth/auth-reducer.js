@@ -13,6 +13,7 @@ import {
   // getCurrentUserRequest,
   getCurrentUserSuccess,
   getCurrentUserError,
+  changeTheme,
 } from './auth-actions';
 
 const initialState = { name: null, email: null };
@@ -47,9 +48,14 @@ const isAuthenticated = createReducer(false, {
   [getCurrentUserError]: () => false,
 });
 
+const bgTheme = createReducer(false, {
+  [changeTheme]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
   user,
   token,
   error,
   isAuthenticated,
+  bgTheme,
 });

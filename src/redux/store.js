@@ -7,7 +7,7 @@ import authReducer from './auth/auth-reducer';
 const persistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'bgTheme'],
 };
 
 const middleware = [

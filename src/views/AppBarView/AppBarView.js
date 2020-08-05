@@ -1,5 +1,7 @@
 import React from 'react';
 import Navigation from '../../Components/Navigation/Navigation';
+import ToolbarTheme from '../../Components/ToolbarTheme/ToolbarTheme';
+
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -36,6 +38,7 @@ const AppBarView = ({ isAuthenticated }) => {
           <Typography variant="h6" className={classes.title}>
             Phonebook
           </Typography>
+          <ToolbarTheme />
           <Navigation />
         </Toolbar>
       </AppBar>
