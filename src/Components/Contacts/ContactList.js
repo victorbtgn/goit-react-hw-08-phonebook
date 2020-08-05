@@ -6,6 +6,8 @@ import contactSelectors from '../../redux/contacts/contacts-selectors';
 import PropTypes from 'prop-types';
 import authSelectors from '../../redux/auth/auth-selectors';
 
+import { Transition } from 'react-spring/renderprops';
+
 class ContactList extends Component {
   componentDidMount() {
     this.props.fetchContacts();
@@ -34,10 +36,28 @@ class ContactList extends Component {
 
     return (
       <ul className="list">
-        {sortContacts &&
-          sortContacts.map(({ id, name, number }) => (
-            <ContactItem key={id} id={id} name={name} number={number} onDelete={() => this.props.onDelete(id)} />
-          ))}
+        {sortContacts && (
+          <Transition
+            items={sortContacts}
+            keys={item => item.id}
+            from={{ transform: 'scaleY(0)', heigth: 0, opacity: 0 }}
+            enter={{ transform: 'scaleY(1)', heigth: 'auto', opacity: 1 }}
+            leave={{ transform: 'scaleY(0)', heigth: 0, opacity: 0 }}
+            config={{ duration: 150 }}
+          >
+            {item => props => (
+              <div style={props}>
+                <ContactItem
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  number={item.number}
+                  onDelete={() => this.props.onDelete(item.id)}
+                />
+              </div>
+            )}
+          </Transition>
+        )}
       </ul>
     );
   }

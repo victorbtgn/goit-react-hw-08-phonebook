@@ -18,6 +18,8 @@ import PublicRoute from './Components/PublicRoute';
 
 import authOps from './redux/auth/auth-operations';
 
+import { Spring } from 'react-spring/renderprops';
+
 class App extends Component {
   componentDidMount() {
     this.props.onGetCurrentUser();
@@ -26,23 +28,29 @@ class App extends Component {
   render() {
     return (
       <Container>
-        <AppBarView />
+        <Spring from={{ opacity: 0 }} to={{ opacity: 1 }} config={{ duration: 2000 }}>
+          {props => (
+            <div style={props}>
+              <AppBarView />
 
-        <Suspense
-          fallback={
-            <div className="loader">
-              <Loader type="ThreeDots" color="#4f5252" width={100} />
+              <Suspense
+                fallback={
+                  <div className="loader">
+                    <Loader type="ThreeDots" color="#4f5252" width={100} />
+                  </div>
+                }
+              >
+                <Switch>
+                  <Route exact path={routes.home} component={HomePage} />
+                  <PublicRoute path={routes.register} restricted redirectTo={routes.home} component={RegisterPage} />
+                  <PublicRoute path={routes.login} restricted redirectTo={routes.contacts} component={LoginPage} />
+                  <PrivateRoute path={routes.contacts} redirectTo={routes.login} component={ContactsView} />
+                  <Route component={HomePage} />
+                </Switch>
+              </Suspense>
             </div>
-          }
-        >
-          <Switch>
-            <Route exact path={routes.home} component={HomePage} />
-            <PublicRoute path={routes.register} restricted redirectTo={routes.home} component={RegisterPage} />
-            <PublicRoute path={routes.login} restricted redirectTo={routes.contacts} component={LoginPage} />
-            <PrivateRoute path={routes.contacts} redirectTo={routes.login} component={ContactsView} />
-            <Route component={HomePage} />
-          </Switch>
-        </Suspense>
+          )}
+        </Spring>
       </Container>
     );
   }
