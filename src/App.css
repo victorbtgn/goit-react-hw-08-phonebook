@@ -108,6 +108,7 @@ input::-webkit-inner-spin-button {
   border: none;
   border-radius: 5px;
   transition: 0.3s linear;
+  outline: none;
 }
 
 .btn:hover {

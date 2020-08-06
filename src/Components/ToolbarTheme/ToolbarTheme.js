@@ -99,12 +99,11 @@ const CustomizedSwitches = ({ checked, onChangeTheme }) => {
 };
 
 const handleTheme = checked => {
+  const body = document.querySelector('body');
   if (!checked) {
-    const body = document.querySelector('body');
     body.classList.add('bodyLigth');
     body.classList.remove('bodyDark');
   } else {
-    const body = document.querySelector('body');
     body.classList.add('bodyDark');
     body.classList.remove('bodyLigth');
   }

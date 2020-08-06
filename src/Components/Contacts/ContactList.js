@@ -40,9 +40,9 @@ class ContactList extends Component {
           <Transition
             items={sortContacts}
             keys={item => item.id}
-            from={{ transform: 'scaleY(0)', heigth: 0, opacity: 0 }}
-            enter={{ transform: 'scaleY(1)', heigth: 'auto', opacity: 1 }}
-            leave={{ transform: 'scaleY(0)', heigth: 0, opacity: 0 }}
+            from={{ transform: 'scaleY(0)', opacity: 0 }}
+            enter={{ transform: 'scaleY(1)', opacity: 1 }}
+            leave={{ transform: 'scaleY(2)', opacity: 0 }}
             config={{ duration: 150 }}
           >
             {item => props => (
