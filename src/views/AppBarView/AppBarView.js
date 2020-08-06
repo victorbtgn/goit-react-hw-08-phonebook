@@ -10,22 +10,16 @@ import IconButton from '@material-ui/core/IconButton';
 
 import SimpleMenu from '../../Components/SimpleMenu/SimpleMenu';
 
-import { connect } from 'react-redux';
-import authSelectors from '../../redux/auth/auth-selectors';
-
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   title: {
     flexGrow: 1,
   },
 }));
 
-const AppBarView = ({ isAuthenticated }) => {
+const AppBarView = () => {
   const classes = useStyles();
 
   return (
@@ -46,8 +40,4 @@ const AppBarView = ({ isAuthenticated }) => {
   );
 };
 
-const mapStateToProps = state => ({
-  isAuthenticated: authSelectors.getIsAuthenticated(state),
-});
-
-export default connect(mapStateToProps)(AppBarView);
+export default AppBarView;
